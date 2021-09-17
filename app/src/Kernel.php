@@ -10,6 +10,7 @@ use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 
 use function dirname;
+use function is_file;
 
 class Kernel extends BaseKernel
 {

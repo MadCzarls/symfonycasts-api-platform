@@ -12,11 +12,15 @@
         <exclude name="PSR12.ControlStructures.ControlStructureSpacing.FirstExpressionLine"/>
         <exclude name="Generic.Formatting.MultipleStatementAlignment.NotSame"/>
         <exclude name="Generic.Formatting.SpaceAfterNot.Incorrect"/>
+        <exclude name="Generic.Commenting.DocComment.MissingShort"/>
         <exclude name="SlevomatCodingStandard.PHP.RequireExplicitAssertion.RequiredExplicitAssertion"/>
         <exclude name="SlevomatCodingStandard.Classes.SuperfluousAbstractClassNaming"/>
         <exclude name="SlevomatCodingStandard.Classes.SuperfluousExceptionNaming"/>
         <exclude name="SlevomatCodingStandard.Classes.SuperfluousInterfaceNaming"/>
         <exclude name="SlevomatCodingStandard.Classes.SuperfluousTraitNaming"/>
+        <exclude name="SlevomatCodingStandard.Commenting.RequireOneLinePropertyDocComment"/>
+        <exclude name="PEAR.Commenting"/>
+        <exclude name="PEAR.NamingConventions"/>
     </rule>
 
     <file>src/</file>
