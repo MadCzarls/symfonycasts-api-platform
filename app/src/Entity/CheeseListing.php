@@ -12,7 +12,14 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=CheeseListingRepository::class)
  */
-#[ApiResource]
+#[ApiResource(
+    collectionOperations: ['get', 'post'],
+    itemOperations: [
+        'get' => ['path' => '/i<3cheeses/{id}'],
+        'put',
+    ],
+    shortName: 'cheeses',
+)]
 class CheeseListing
 {
     /**

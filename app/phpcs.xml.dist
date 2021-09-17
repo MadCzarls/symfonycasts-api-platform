@@ -21,6 +21,7 @@
         <exclude name="SlevomatCodingStandard.Commenting.RequireOneLinePropertyDocComment"/>
         <exclude name="PEAR.Commenting"/>
         <exclude name="PEAR.NamingConventions"/>
+        <exclude name="Squiz.Arrays.ArrayDeclaration.NoKeySpecified"/>
     </rule>
 
     <file>src/</file>
