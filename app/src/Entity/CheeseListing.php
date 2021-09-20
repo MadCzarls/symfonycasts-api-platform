@@ -37,23 +37,20 @@ class CheeseListing
 
     /**
      * @ORM\Column(type="string", length=255)
-     *
-     * @Groups({"cheese_listing:read", "cheese_listing:write"})
      */
+    #[Groups(['cheese_listing:read', 'cheese_listing:write'])]
     private ?string $title;
 
     /**
      * @ORM\Column(type="text")
-     *
-     * @Groups({"cheese_listing:read"})
      */
+    #[Groups(['cheese_listing:read'])]
     private ?string $description;
 
     /**
      * @ORM\Column(type="integer")
-     *
-     * @Groups({"cheese_listing:read", "cheese_listing:write"})
      */
+    #[Groups(['cheese_listing:read', 'cheese_listing:write'])]
     private ?int $price;
 
     /**
@@ -95,9 +92,8 @@ class CheeseListing
 
     /**
      * The description of the cheese as raw text.
-     *
-     * @Groups({"cheese_listing:write"})
      */
+    #[Groups(['cheese_listing:write'])]
     public function setTextDescription(string $description): self
     {
         $this->description = nl2br($description);
@@ -124,9 +120,8 @@ class CheeseListing
 
     /**
      * How long ago in text that this cheese listing was added.
-     *
-     * @Groups({"cheese_listing:read"})
      */
+    #[Groups(['cheese_listing:read'])]
     public function getCreatedAtAgo(): string
     {
         return Carbon::instance($this->getCreatedAt())->diffForHumans();
