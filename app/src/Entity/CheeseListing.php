@@ -16,6 +16,7 @@ use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Serializer\Annotation\SerializedName;
+use Symfony\Component\Validator\Constraints as Assert;
 
 use function nl2br;
 use function strlen;
@@ -53,18 +54,27 @@ class CheeseListing
      * @ORM\Column(type="string", length=255)
      */
     #[Groups(['cheese_listing:read', 'cheese_listing:write'])]
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        min: 2,
+        max: 50,
+        maxMessage: 'Describe your cheese in 50 chars or less',
+    )]
     private ?string $title;
 
     /**
      * @ORM\Column(type="text")
      */
     #[Groups(['cheese_listing:read'])]
+    #[Assert\NotBlank]
     private ?string $description;
 
     /**
      * @ORM\Column(type="integer")
      */
     #[Groups(['cheese_listing:read', 'cheese_listing:write'])]
+    #[Assert\NotBlank]
+    #[Assert\GreaterThan(0)]
     private ?int $price;
 
     /**
