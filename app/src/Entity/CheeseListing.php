@@ -33,6 +33,7 @@ use function substr;
     shortName: 'cheeses',
     denormalizationContext: ['groups' => ['cheese_listing:write'], 'swagger_definition_name' => 'Write'],
     normalizationContext: ['groups' => ['cheese_listing:read'], 'swagger_definition_name' => 'Read'],
+    paginationItemsPerPage: 10,
 )]
 #[ApiFilter(BooleanFilter::class, properties: ['isPublished'])]
 #[ApiFilter(SearchFilter::class, properties: ['title' => 'partial'])]
