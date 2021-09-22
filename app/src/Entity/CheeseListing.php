@@ -32,6 +32,7 @@ use function substr;
     ],
     shortName: 'cheeses',
     denormalizationContext: ['groups' => ['cheese_listing:write'], 'swagger_definition_name' => 'Write'],
+    formats: ['jsonld', 'json', 'html', 'jsonhal', 'csv' => ['text/csv']],
     normalizationContext: ['groups' => ['cheese_listing:read'], 'swagger_definition_name' => 'Read'],
     paginationItemsPerPage: 10,
 )]
