@@ -4,11 +4,14 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
-use JetBrains\PhpStorm\Pure;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 use function array_unique;
 
@@ -16,6 +19,12 @@ use function array_unique;
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\Table(name="`user`")
  */
+#[UniqueEntity('email')]
+#[UniqueEntity('username')]
+#[ApiResource(
+    denormalizationContext: ['groups' => ['user:write']],
+    normalizationContext: ['groups' => ['user:read']],
+)]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     /**
@@ -28,6 +37,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      */
+    #[Groups(['user:read', 'user:write'])]
+    #[Assert\Email]
+    #[Assert\NotBlank]
     private ?string $email;
 
     /**
@@ -42,11 +54,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      *
      * @var string|null The hashed password
      */
+    #[Groups(['user:write'])]
     private ?string $password;
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
      */
+    #[Groups(['user:read', 'user:write'])]
+    #[Assert\NotBlank]
     private ?string $username;
 
     public function getId(): ?int
