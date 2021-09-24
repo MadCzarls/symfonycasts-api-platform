@@ -45,7 +45,12 @@ use function substr;
     paginationItemsPerPage: 10,
 )]
 #[ApiFilter(BooleanFilter::class, properties: ['isPublished'])]
-#[ApiFilter(SearchFilter::class, properties: ['title' => 'partial'])]
+#[ApiFilter(SearchFilter::class, properties: [
+    'title' => 'partial',
+    'description' => 'partial',
+    'owner' => 'exact',
+    'owner.username' => 'partial',
+])]
 #[ApiFilter(RangeFilter::class, properties: ['price'])]
 #[ApiFilter(PropertyFilter::class)]
 class CheeseListing
