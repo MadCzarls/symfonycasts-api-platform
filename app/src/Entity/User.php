@@ -67,9 +67,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $username;
 
     /**
-     * @ORM\OneToMany(targetEntity=CheeseListing::class, mappedBy="owner")
+     * @ORM\OneToMany(targetEntity=CheeseListing::class, mappedBy="owner", cascade={"persist"})
      */
     #[Groups(['user:read', 'user:write'])]
+    #[Assert\Valid]
     private Collection $cheeseListings;
 
     public function __construct()
