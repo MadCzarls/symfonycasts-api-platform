@@ -1,7 +1,7 @@
 ARG ENV
 ARG TIMEZONE
 
-FROM php:8.0.10-fpm-buster
+FROM php:8.0.11-fpm-buster
 RUN apt-get update
 RUN apt-get install -y \
     apt-utils \

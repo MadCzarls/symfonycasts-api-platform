@@ -1,7 +1,7 @@
 {
-    "name": "madczarls/symfony-docker",
+    "name": "madczarls/symfonycasts-api-platform",
     "type": "project",
-    "description": "Base project template for PHP + Symfony + Nginx + MySQL",
+    "description": "Sandbox for API Platform learning - PHP 8 and Symfony 5.3",
     "license": "MIT",
     "minimum-stability": "dev",
     "prefer-stable": true,
